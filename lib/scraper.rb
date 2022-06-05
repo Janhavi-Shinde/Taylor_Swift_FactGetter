@@ -9,16 +9,19 @@ class Scraper
 # def initialize 
 # @@titles = []
 # end
-    def self.title
+    def self.titler
     @@titles.delete_at(1)
     @@titles.delete_at(1)
-    @@titles.delete_at(-1)
     @@titles.delete_at(-1)
     @@titles.delete_at(-1)
     @@titles.delete_at(2)
     @@titles.uniq
     @@titles
     end
+
+def self.title
+    @@titles
+end
 
     def scrape_fandom
        
@@ -32,6 +35,7 @@ class Scraper
 
 
     def converter(songname)
+        
         songname.gsub(" ","-")
     end
 
@@ -39,7 +43,7 @@ class Scraper
     def scrape_facts(song_name)
         song_to_use = converter(song_name)
         fact_page = Nokogiri::HTML(open("https://www.songfacts.com/facts/taylor-swift/#{song_to_use}"))
-         just_facts = fact_page.css("ul.songfacts-results li").first.text
+         just_facts = fact_page.css("ul.songfacts-results li").text
          binding.pry
     end
 end

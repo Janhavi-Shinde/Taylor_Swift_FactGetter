@@ -4,13 +4,13 @@ class Cli
     def initialize
         scraper = Scraper.new
         scraper.scrape_fandom
-        scraper.scrape_facts("end game")
+        scraper.scrape_facts(Scraper.title[2])
         welcome
         
     end
 
     def list_of_songs
-        Scraper.title.each.with_index(1) do |song, index|
+        Scraper.titler.each.with_index(1) do |song, index|
             puts " #{index}. #{song}"
         end
     end
