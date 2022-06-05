@@ -5,6 +5,7 @@ require_relative '../config/environment'
 class Scraper
     # attr_accessor :title
     @@titles = []
+@@song_fact = []
 # def initialize 
 # @@titles = []
 # end
@@ -28,11 +29,20 @@ class Scraper
             end       
     # binding.pry
     end
+
+    def scrape_facts(song_name)
+        fact_page = Nokogiri::HTML(open("https://www.songfacts.com/facts/taylor-swift/#{song_name}"))
+         just_facts = fact_page.css("ul.songfacts-results li").first.text.chomp
+         binding.pry
+    end
 end
+
 # reputation = Scraper.new
-# reputation.scrape_fandom
+# reputation.scrape_facts
 # puts reputation.title
 # returning array of songs, but also some names
+
+
 
 
 # def scrape_rep_songs
