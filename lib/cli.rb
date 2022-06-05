@@ -4,7 +4,7 @@ class Cli
     def initialize
         scraper = Scraper.new
         scraper.scrape_fandom
-        scraper.scrape_facts("gorgeous")
+        scraper.scrape_facts("end game")
         welcome
         
     end
