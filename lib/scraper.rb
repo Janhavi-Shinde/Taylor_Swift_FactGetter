@@ -2,21 +2,34 @@ require_relative '../config/environment'
 
 
 class Scraper
-    attr_accessor :title
+    # attr_accessor :title
+    @@titles = []
+# def initialize 
+# @@titles = []
+# end
+    def self.title
+    @@titles.delete_at(1)
+    @@titles.delete_at(1)
+    @@titles.delete_at(-1)
+    @@titles.delete_at(-1)
+    @@titles.delete_at(-1)
+    @@titles.uniq
+    @@titles
+    end
+
     def scrape_fandom
-        @title = []
+       
         wikipedia = Nokogiri::HTML(open("https://taylorswift.fandom.com/wiki/Reputation"))
                   
             wikipedia.css("table.tracklist tr td a").each do | anchor |
-            @title << anchor.text
-            end
-
-        
-    binding.pry
+            @@titles << anchor.text
+            end       
+    # binding.pry
     end
 end
 reputation = Scraper.new
 reputation.scrape_fandom
+# puts reputation.title
 # returning array of songs, but also some names
 
 
