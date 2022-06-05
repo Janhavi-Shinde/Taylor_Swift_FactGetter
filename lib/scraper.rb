@@ -1,6 +1,7 @@
 require_relative '../config/environment'
 
 
+
 class Scraper
     # attr_accessor :title
     @@titles = []
@@ -28,8 +29,8 @@ class Scraper
     # binding.pry
     end
 end
-reputation = Scraper.new
-reputation.scrape_fandom
+# reputation = Scraper.new
+# reputation.scrape_fandom
 # puts reputation.title
 # returning array of songs, but also some names
 
