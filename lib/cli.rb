@@ -1,3 +1,10 @@
+
+def list_of_songs
+    Scraper.title.each.with_index(1) do |song, index|
+        puts " #{index}. #{song}"
+    end
+end
+
 def welcome
  puts " "
 puts " ***************************"
@@ -7,8 +14,9 @@ puts " "
 puts " ***************************"
 puts " "
 puts " "
-puts Scraper.title
+list_of_songs
 end
+
 
 
 

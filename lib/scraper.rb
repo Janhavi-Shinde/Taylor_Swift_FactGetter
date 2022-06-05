@@ -13,6 +13,7 @@ class Scraper
     @@titles.delete_at(-1)
     @@titles.delete_at(-1)
     @@titles.delete_at(-1)
+    @@titles.delete_at(2)
     @@titles.uniq
     @@titles
     end
