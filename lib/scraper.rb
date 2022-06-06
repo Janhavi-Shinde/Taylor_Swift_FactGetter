@@ -42,8 +42,9 @@ end
     def scrape_facts(songname)
         song_to_use = converter(songname)
         fact_page = Nokogiri::HTML(open("https://www.songfacts.com/facts/taylor-swift/#{song_to_use}"))
-         just_facts = fact_page.css("ul.songfacts-results li").first.text
-         binding.pry
+        just_facts = fact_page.css("ul.songfacts-results li").first.text
+        binding.pry
+         
     end
 end
 

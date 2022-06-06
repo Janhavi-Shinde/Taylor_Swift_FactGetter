@@ -5,8 +5,12 @@ class Cli
         scraper = Scraper.new
         scraper.scrape_fandom
         Scraper.titler
-        scraper.scrape_facts(Scraper.title[2])
+        
         welcome
+        input = gets.chomp.to_i
+       
+
+        scraper.scrape_facts(Scraper.title[input - 1])
         # puts scraper.converter('end game') ==> is returning: end-game 
     end
 
