@@ -35,15 +35,14 @@ end
 
 
     def converter(songname)
-        
         songname.gsub(" ","-")
     end
 
 
-    def scrape_facts(song_name)
-        song_to_use = converter(song_name)
+    def scrape_facts(songname)
+        song_to_use = converter(songname)
         fact_page = Nokogiri::HTML(open("https://www.songfacts.com/facts/taylor-swift/#{song_to_use}"))
-         just_facts = fact_page.css("ul.songfacts-results li").text
+         just_facts = fact_page.css("ul.songfacts-results li").first.text
          binding.pry
     end
 end
