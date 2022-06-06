@@ -1,17 +1,19 @@
 require_relative "./scraper.rb"
 class Cli
-
+@@scraper
     def initialize
-        scraper = Scraper.new
-        scraper.scrape_fandom
+        @@scraper = Scraper.new
+        @@scraper.scrape_fandom
         Scraper.titler
         
         welcome
-        input = gets.chomp.to_i
-       
-
-        scraper.scrape_facts(Scraper.title[input - 1])
+        get_fact
         # puts scraper.converter('end game') ==> is returning: end-game 
+    end
+    
+    def get_fact
+        input = gets.chomp.to_i
+        @@scraper.scrape_facts(Scraper.title[input - 1])
     end
 
     def list_of_songs
