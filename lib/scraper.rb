@@ -25,6 +25,10 @@ def self.title
     @@titles
 end
 
+def self.api_song
+    @@api_song
+end
+
     def scrape_fandom
        
         wikipedia = Nokogiri::HTML(open("https://taylorswift.fandom.com/wiki/Reputation"))

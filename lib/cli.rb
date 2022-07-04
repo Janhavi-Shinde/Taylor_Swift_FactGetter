@@ -1,6 +1,6 @@
 require_relative "./scraper.rb"
 class Cli
-    attr_accessor :input_2
+    attr_accessor :input_2 
 @@scraper
 @@api_quote
 
@@ -18,12 +18,17 @@ class Cli
     end
     
     def get_fact
+    
         input = gets.chomp.to_i
-        
         @@scraper.scrape_facts(Scraper.title[input - 1])
+        
         input = nil
     end
+    
+    def get_api_fact
+        @@scraper.scrape_facts(Scraper.api_song)
 
+    end
     def list_of_songs
         Scraper.title.each.with_index(1) do |song, index|
             puts " #{index}. #{song}"
@@ -39,24 +44,26 @@ class Cli
         puts "      From Taylor Swift API: "
         puts "      #{@@scraper.get_from_api}"
         puts " "
+        puts "      "
         puts "      ***************************"
          puts " "
         list_of_songs
     end
 
 
-    def taylor_api
-        puts "Can't pick from these? Type 'API' to get a fact about the song whose lyric was randomly generated!"
-    end
+    
     def ask_after_facts
         puts "          ************************"
         puts "Would you like to pick another song? Enter either y or n"
+        puts "Want to know a fun fact about the randomly generated quote's song? Enter 'API'"
         @input_2 = gets.chomp
         if @input_2 == 'y' || @input_2 == 'Y'
             list_of_songs
             get_fact
         elsif @input_2 == 'n' || @input_2 == 'N'
             nil
+        elsif @input_2 == 'API' || @input_2 == 'api'
+            get_api_fact
         end
 
     end

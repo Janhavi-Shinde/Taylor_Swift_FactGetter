@@ -2,7 +2,7 @@
 require_relative "../config/environment"
 
 
-# puts     Scraper.new.get_from_api
+
 
 var_1 = Cli.new
 
