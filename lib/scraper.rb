@@ -6,6 +6,8 @@ class Scraper
     # attr_accessor :title
     @@titles = []
 @@song_fact = []
+@@api_song 
+@@api_quote
 # def initialize 
 # @@titles = []
 # end
@@ -33,7 +35,20 @@ end
     # binding.pry
     end
 
+    def get_from_api
+        uri = URI.parse('https://taylorswiftapi.herokuapp.com/get')
+        response = Net::HTTP.get_response(uri)
+        
+        random_quote = response.body
+        var1 = JSON.parse(random_quote)
+        @@api_quote = var1['quote']
+        @@api_song = var1['song']
+        "Taylor Swift once said '#{@@api_quote}' 
+        in the song '#{@@api_song}' "
+        
+    end
 
+    
     def converter(songname)
         songname.gsub(" ","-")
     end

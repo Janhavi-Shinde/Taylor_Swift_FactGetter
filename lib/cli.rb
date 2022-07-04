@@ -2,19 +2,24 @@ require_relative "./scraper.rb"
 class Cli
     attr_accessor :input_2
 @@scraper
+@@api_quote
+
     def initialize
         @@scraper = Scraper.new
         @@scraper.scrape_fandom
+        # @@scraper.get_from_api ##storing random quote in Scraper class variables
         Scraper.titler
         
         welcome
         get_fact
+        
         
         # puts scraper.converter('end game') ==> is returning: end-game 
     end
     
     def get_fact
         input = gets.chomp.to_i
+        
         @@scraper.scrape_facts(Scraper.title[input - 1])
         input = nil
     end
@@ -30,12 +35,19 @@ class Cli
         puts "      ***************************"
         puts "      Welcome to the CLI App!"
         puts "      Please select a number between 1-16, to find out fun facts about that song"
+        puts ""
+        puts "      From Taylor Swift API: "
+        puts "      #{@@scraper.get_from_api}"
         puts " "
         puts "      ***************************"
          puts " "
         list_of_songs
     end
 
+
+    def taylor_api
+        puts "Can't pick from these? Type 'API' to get a fact about the song whose lyric was randomly generated!"
+    end
     def ask_after_facts
         puts "          ************************"
         puts "Would you like to pick another song? Enter either y or n"
