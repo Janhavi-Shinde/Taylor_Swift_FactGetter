@@ -20,6 +20,7 @@ class Cli
     def get_fact
     
         input = gets.chomp.to_i
+        puts  "   "
         @@scraper.scrape_facts(Scraper.title[input - 1])
         
         input = nil
@@ -42,6 +43,7 @@ class Cli
         puts "      Please select a number between 1-16, to find out fun facts about that song"
         puts ""
         puts "      From Taylor Swift API: "
+        puts " "
         puts "      #{@@scraper.get_from_api}"
         puts " "
         puts "      "
@@ -59,10 +61,13 @@ class Cli
         @input_2 = gets.chomp
         if @input_2 == 'y' || @input_2 == 'Y'
             list_of_songs
+            
             get_fact
         elsif @input_2 == 'n' || @input_2 == 'N'
             nil
         elsif @input_2 == 'API' || @input_2 == 'api'
+            puts "  "
+            puts "API lyric's fact:"
             get_api_fact
         end
 
